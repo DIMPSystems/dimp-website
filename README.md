@@ -2,9 +2,9 @@
 
 Sitio web oficial de DIMP Systems.
 
-> **Construimos tecnología. Desarrollamos personas.**
+Landing institucional: qué hacemos, proyectos, quiénes somos, equipo y contacto (email, WhatsApp y formulario).
 
-Esta primera versión es una landing page institucional enfocada en presentar los servicios de DIMP, su forma de trabajo y un caso de éxito anonimizado.
+Sitio publicado: https://dimpsystems.github.io/dimp-website/
 
 ## Tecnologías
 
@@ -30,16 +30,27 @@ También se puede abrir `index.html` directamente, aunque un servidor local repr
 
 ```text
 .
-├── index.html   # Contenido y estructura semántica
-├── styles.css   # Sistema visual y estilos responsive
-├── script.js    # Navegación, animaciones y formulario demostrativo
-├── LICENSE      # Licencia MIT
-└── README.md    # Documentación del proyecto
+├── index.html          # Contenido y estructura semántica
+├── styles.css          # Sistema visual (mobile-first, tema oscuro)
+├── script.js           # Menú, animaciones y envío del formulario
+├── assets/             # Logo, favicons y QR del sitio
+├── apps-script/        # Receptor del formulario (Google Apps Script) + guía
+├── LICENSE
+└── README.md
 ```
 
-## Estado del formulario
+## Formulario de contacto
 
-El formulario de contacto es demostrativo: valida los campos requeridos en el navegador, pero no envía ni almacena datos. Antes de publicar el sitio se debe definir el canal de recepción y conectar el formulario a un servicio o backend.
+El formulario envía las consultas a un Google Apps Script publicado como Web App,
+que las guarda en una Google Sheet y avisa por email a `dimpsystems@gmail.com`.
+La URL del Web App se configura en `script.js` (`FORM_ENDPOINT`). Mientras esté
+vacía, el formulario valida los campos e indica que se escriba por email o WhatsApp.
+
+Instalación paso a paso: [`apps-script/README.md`](apps-script/README.md).
+
+## Publicación
+
+El sitio se publica con GitHub Pages desde la rama `main` (carpeta raíz).
 
 ## Licencia
 
