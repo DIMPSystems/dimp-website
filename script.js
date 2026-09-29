@@ -135,7 +135,7 @@ document.querySelectorAll('.reveal').forEach((element) => observer.observe(eleme
 // avisa por email). Pegar acá la URL del Web App publicado (termina en /exec).
 // Ver apps-script/README.md para el paso a paso.
 // ---------------------------------------------------------------------------
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbx6XQbqfsn1NGsq1f7nl7mz6Coo5KVD9CPsrpmFqxqZMJNul7xTiWhaZxHcH1enDOlc/exec';
 
 const submitButton = form.querySelector('[data-submit]');
 const submitLabel = submitButton.innerHTML;
