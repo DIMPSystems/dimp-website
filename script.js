@@ -8,7 +8,7 @@ const menuLinks = Array.from(navigation.querySelectorAll('a'));
 let lockedScrollY = 0;
 let isScrollLocked = false;
 
-const isMobileNavigation = () => window.matchMedia('(max-width: 900px)').matches;
+const isMobileNavigation = () => window.matchMedia('(max-width: 899.98px)').matches;
 const isMenuOpen = () => menuToggle.getAttribute('aria-expanded') === 'true';
 
 const focusElement = (element) => {
@@ -130,9 +130,74 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
-form.addEventListener('submit', (event) => {
+// ---------------------------------------------------------------------------
+// Formulario de contacto → Google Apps Script (guarda en una Google Sheet y
+// avisa por email). Pegar acá la URL del Web App publicado (termina en /exec).
+// Ver apps-script/README.md para el paso a paso.
+// ---------------------------------------------------------------------------
+const FORM_ENDPOINT = '';
+
+const submitButton = form.querySelector('[data-submit]');
+const submitLabel = submitButton.innerHTML;
+const FALLBACK_HTML = 'También podés escribirnos a <a href="mailto:dimpsystems@gmail.com">dimpsystems@gmail.com</a> o por <a href="https://wa.me/5491149172740" target="_blank" rel="noopener">WhatsApp</a>.';
+
+const setStatus = (type, html) => {
+  formStatus.className = `form-status ${type ? `is-${type}` : ''}`;
+  formStatus.innerHTML = html;
+};
+
+const validateForm = () => {
+  let firstInvalid = null;
+  form.querySelectorAll('input[required], textarea[required]').forEach((field) => {
+    const isValid = field.value.trim() !== '' && field.checkValidity();
+    field.setAttribute('aria-invalid', String(!isValid));
+    if (!isValid && !firstInvalid) firstInvalid = field;
+  });
+  return firstInvalid;
+};
+
+form.addEventListener('input', (event) => {
+  if (event.target.getAttribute('aria-invalid') === 'true' && event.target.checkValidity() && event.target.value.trim()) {
+    event.target.setAttribute('aria-invalid', 'false');
+  }
+});
+
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  formStatus.textContent = 'La consulta todavía no se envió. Por ahora, podés escribirnos por email.';
+
+  const firstInvalid = validateForm();
+  if (firstInvalid) {
+    setStatus('error', 'Revisá los campos marcados: nombre, un email válido y tu mensaje.');
+    focusElement(firstInvalid);
+    return;
+  }
+
+  if (!FORM_ENDPOINT) {
+    setStatus('error', `El formulario todavía no está conectado. ${FALLBACK_HTML}`);
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Enviando…';
+  setStatus('', '');
+
+  try {
+    // Envío como formulario simple (sin headers custom) para que Apps Script lo
+    // acepte sin preflight de CORS y lo lea desde e.parameter.
+    const response = await fetch(FORM_ENDPOINT, { method: 'POST', body: new URLSearchParams(new FormData(form)) });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) throw new Error(result.error || `HTTP ${response.status}`);
+
+    form.reset();
+    form.querySelectorAll('[aria-invalid]').forEach((field) => field.removeAttribute('aria-invalid'));
+    setStatus('ok', '¡Gracias! Recibimos tu consulta y te vamos a responder a la brevedad.');
+  } catch (error) {
+    console.error('No se pudo enviar el formulario:', error);
+    setStatus('error', `No pudimos enviar tu consulta. ${FALLBACK_HTML}`);
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = submitLabel;
+  }
 });
 
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
