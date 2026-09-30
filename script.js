@@ -201,3 +201,60 @@ form.addEventListener('submit', async (event) => {
 });
 
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
+
+// ---------------------------------------------------------------------------
+// Pequeños toques de movimiento con intención (no decorativos por defecto):
+// las cifras del caso "22h → 2h" cuentan al entrar en pantalla, y la foto del
+// hero tiene una profundidad sutil al scrollear. Ambos respetan "reducir
+// movimiento".
+// ---------------------------------------------------------------------------
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const countElements = document.querySelectorAll('[data-count-to]');
+if (countElements.length && !prefersReducedMotion) {
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      countObserver.unobserve(entry.target);
+
+      const target = Number(entry.target.dataset.countTo);
+      const duration = 900;
+      const start = performance.now();
+
+      const step = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        entry.target.textContent = Math.round(target * eased);
+        if (progress < 1) window.requestAnimationFrame(step);
+      };
+
+      window.requestAnimationFrame(step);
+    });
+  }, { threshold: 0.6 });
+
+  countElements.forEach((element) => countObserver.observe(element));
+}
+
+const heroPhotoImg = document.querySelector('.hero-photo img');
+if (heroPhotoImg && !prefersReducedMotion) {
+  let ticking = false;
+
+  const updateHeroParallax = () => {
+    const heroSection = heroPhotoImg.closest('.hero');
+    if (heroSection) {
+      const rect = heroSection.getBoundingClientRect();
+      const offset = Math.min(Math.max(rect.top * -0.06, -18), 18);
+      heroPhotoImg.style.transform = `translateY(${offset}px) scale(1.06)`;
+    }
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeroParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateHeroParallax();
+}
