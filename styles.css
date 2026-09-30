@@ -84,10 +84,30 @@ section[id] { scroll-margin-top: var(--header-h); }
 .seam-from-ink, .seam-from-paper { position: relative; }
 .seam-from-ink::before, .seam-from-paper::before {
   content: ""; position: absolute; top: 0; left: 0; right: 0;
-  height: clamp(40px, 7vw, 84px); pointer-events: none; z-index: 0;
+  height: clamp(26px, 4.5vw, 52px); pointer-events: none; z-index: 0;
 }
-.seam-from-ink::before { background: linear-gradient(to bottom, var(--ink), transparent); }
-.seam-from-paper::before { background: linear-gradient(to bottom, var(--paper), transparent); }
+/* Curva "ease" armada a mano con paradas intermedias: sostiene el color
+   sólido más tiempo al entrar (para que no se sienta cortado contra la
+   sección anterior) y termina de disolverse en una curva pareja, sin
+   quedarse a mitad de camino como un manchón gris. */
+.seam-from-ink::before {
+  background: linear-gradient(to bottom,
+    var(--ink) 0%, var(--ink) 22%,
+    rgba(20, 18, 15, .88) 38%,
+    rgba(20, 18, 15, .62) 54%,
+    rgba(20, 18, 15, .34) 70%,
+    rgba(20, 18, 15, .12) 86%,
+    transparent 100%);
+}
+.seam-from-paper::before {
+  background: linear-gradient(to bottom,
+    var(--paper) 0%, var(--paper) 22%,
+    rgba(242, 236, 224, .88) 38%,
+    rgba(242, 236, 224, .62) 54%,
+    rgba(242, 236, 224, .34) 70%,
+    rgba(242, 236, 224, .12) 86%,
+    transparent 100%);
+}
 
 /* Textura de grano sutil sobre toda la página: le da cuerpo a los bloques de
    color plano sin depender de fotos en todas partes. */
@@ -357,7 +377,15 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
   .process-intro { position: sticky; top: calc(var(--header-h) + 2rem); }
   .project-card { grid-template-columns: 1.15fr .85fr; gap: 3rem; padding: 3rem; }
   .about { min-height: min(88svh, 780px); display: flex; align-items: center; }
-  .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; }
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: stretch; }
+  .about-copy, .about-text { display: flex; flex-direction: column; min-height: 22rem; }
+  .about-text { justify-content: center; }
+  /* El logo pesa menos que el título, así que centrar todo el bloque como
+     una unidad deja el logo arriba del centro real. Lo empujamos con un
+     margen propio para que el CENTRO del logo caiga a la altura del centro
+     del texto de la derecha (en vez de centrar el conjunto logo+título). */
+  .about-copy { justify-content: flex-start; }
+  .about-logo { margin-top: 12.5rem; }
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .contact-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .contact-form { padding: 2rem; }
