@@ -334,7 +334,7 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
 
   .hero { min-height: min(100svh, 880px); display: flex; flex-direction: column; }
   .hero-inner { flex: 1; min-height: 0; padding-block: 4rem; }
-  .hero-bg img { object-position: 68% 48%; }
+  .hero-bg img { object-position: 60% 42%; }
   .hero-bg::after {
     background:
       radial-gradient(ellipse 46% 40% at 100% 100%, rgba(20, 18, 15, .85), rgba(20, 18, 15, 0) 70%),
