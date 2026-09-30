@@ -79,9 +79,15 @@ section[id] { scroll-margin-top: var(--header-h); }
 .section { position: relative; padding-block: var(--section-space); background: var(--bg); color: var(--text); transition: background-color .3s, color .3s; }
 .section > .container { position: relative; z-index: 1; }
 
-/* Sin degradé de "costura" entre secciones: el corte es seco a propósito
-   (como en las referencias), apoyado en tipografía grande y aire generoso
-   en vez de disimularse con un blur. */
+/* Costura corta entre secciones: un desvanecido breve (no una línea, no un
+   corte seco) para que el cambio de tono se sienta suave sin ser largo. */
+.seam-from-ink, .seam-from-paper { position: relative; }
+.seam-from-ink::before, .seam-from-paper::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: clamp(40px, 7vw, 84px); pointer-events: none; z-index: 0;
+}
+.seam-from-ink::before { background: linear-gradient(to bottom, var(--ink), transparent); }
+.seam-from-paper::before { background: linear-gradient(to bottom, var(--paper), transparent); }
 
 /* Textura de grano sutil sobre toda la página: le da cuerpo a los bloques de
    color plano sin depender de fotos en todas partes. */
@@ -174,7 +180,7 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
 .hero .button-ghost { background: rgba(20, 18, 15, .5); border-color: rgba(242, 236, 224, .3); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .hero .button-ghost:hover { background: rgba(20, 18, 15, .68); }
 
-.hero-foot { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.1rem; padding-block: 1.4rem 2.5rem; border-top: 1px solid rgba(242, 236, 224, .18); color: rgba(242, 236, 224, .72); font-family: var(--font-display); font-size: .82rem; text-shadow: 0 2px 12px rgba(10, 9, 7, .5); }
+.hero-foot { position: relative; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.1rem; margin-top: 1.4rem; padding: .85rem 1rem; border-top: 1px solid rgba(242, 236, 224, .18); background: rgba(15, 13, 11, .5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border-radius: var(--radius-sm); color: #fff; font-family: var(--font-display); font-size: .82rem; text-shadow: 0 1px 2px rgba(0, 0, 0, .8); }
 .hero-foot i { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 
 /* Declaración: un momento tipográfico grande y con carácter entre el hero y
@@ -225,6 +231,9 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
 .qr-info span { color: var(--muted); font-size: .82rem; }
 .notice-card { display: grid; gap: .6rem; padding: 1rem 1.1rem; border: 1px solid var(--line-strong); border-left: 3px solid var(--accent); border-radius: var(--radius); background: var(--surface); }
 .notice-label { color: var(--muted); font-family: var(--font-display); font-size: .8rem; }
+.notice-card b { display: block; height: 9px; border-radius: 2px; background: var(--line-strong); }
+.notice-card b.w-90 { width: 90%; }
+.notice-card b.w-70 { width: 70%; }
 
 .project-card + .project-card { margin-top: 1.25rem; }
 .project-result { margin-top: 1rem; color: var(--text-soft); }
@@ -243,7 +252,7 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
 
 /* Nosotros (tinta) */
 .about-grid { display: grid; gap: 2rem; }
-.about-logo { display: block; width: min(100%, 260px); height: auto; margin: 0 auto 2.5rem; filter: grayscale(1) brightness(1.6); opacity: .92; }
+.about-logo { display: block; width: min(60%, 260px); height: auto; margin: 0 0 2.5rem; }
 .about-lead { font-size: clamp(1.1rem, 3.6vw, 1.3rem); line-height: 1.5; }
 .about-text > p + p { margin-top: 1rem; color: var(--text-soft); }
 .values { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
@@ -347,6 +356,7 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
   .process-grid { grid-template-columns: .9fr 1.1fr; gap: 5rem; align-items: start; }
   .process-intro { position: sticky; top: calc(var(--header-h) + 2rem); }
   .project-card { grid-template-columns: 1.15fr .85fr; gap: 3rem; padding: 3rem; }
+  .about { min-height: min(88svh, 780px); display: flex; align-items: center; }
   .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; }
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .contact-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
