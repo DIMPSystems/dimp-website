@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>DIMP Systems — Sistemas de gestión y automatización a medida</title>
     <meta name="description" content="Desarrollamos sistemas de gestión, automatizaciones y paneles de control a medida para pequeños negocios que quieren dejar atrás los procesos manuales.">
-    <meta name="theme-color" content="#14120f">
+    <meta name="theme-color" content="#0b0b0b">
     <meta property="og:type" content="website">
     <meta property="og:title" content="DIMP Systems — Sistemas a medida para tu negocio">
     <meta property="og:description" content="Sistemas de gestión, automatización y paneles de control pensados para las necesidades reales de cada negocio.">
@@ -15,7 +15,7 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap">
     <link rel="stylesheet" href="styles.css">
     <script>document.documentElement.classList.add('js');</script>
     <script src="script.js" defer></script>
@@ -51,7 +51,8 @@
       <section class="hero" id="inicio" aria-labelledby="hero-title">
         <div class="container hero-grid">
           <div class="hero-copy reveal">
-            <h1 id="hero-title">Menos planillas.<br>Más negocio.</h1>
+            <p class="eyebrow"><span></span> Sistemas a medida para negocios</p>
+            <h1 id="hero-title">Menos planillas.<br>Más <em>negocio.</em></h1>
             <p class="hero-lead">Creamos sistemas de gestión y automatizaciones a medida para negocios que todavía hacen a mano lo que una buena herramienta puede resolver.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="#contacto">Contanos qué necesitás <span aria-hidden="true">↗</span></a>
@@ -63,17 +64,25 @@
           </div>
 
           <div class="hero-visual reveal" aria-hidden="true">
-            <div class="ledger">
-              <div class="ledger-panel ledger-before">
-                <span class="ledger-label">Hoy</span>
-                <i class="ledger-row"></i><i class="ledger-row"></i><i class="ledger-row"></i><i class="ledger-row"></i>
-              </div>
-              <span class="ledger-arrow">→</span>
-              <div class="ledger-panel ledger-after">
-                <span class="ledger-label">Con DIMP</span>
-                <i class="ledger-row"></i><i class="ledger-row"></i><i class="ledger-row"></i><i class="ledger-row"></i>
+            <div class="mock-panel">
+              <div class="mock-bar"><i></i><i></i><i></i><span>panel · gestión</span></div>
+              <div class="mock-body">
+                <div class="mock-row-title"><b></b><em>Hoy</em></div>
+                <div class="mock-stats">
+                  <div><span>Registros</span><b class="w-70"></b></div>
+                  <div><span>Avisos</span><b class="w-45"></b></div>
+                  <div><span>Pendientes</span><b class="w-25 accent"></b></div>
+                </div>
+                <ul class="mock-list">
+                  <li><i class="ok"></i><b class="w-80"></b></li>
+                  <li><i class="ok"></i><b class="w-60"></b></li>
+                  <li><i class="warn"></i><b class="w-70"></b></li>
+                  <li><i class="ok"></i><b class="w-50"></b></li>
+                </ul>
               </div>
             </div>
+            <div class="mock-chip mock-chip-a"><span class="dot"></span> Tarea automatizada</div>
+            <div class="mock-chip mock-chip-b"><span class="qr-mini"><i></i><i></i><i></i><i></i></span> Ficha por QR</div>
           </div>
         </div>
         <div class="container hero-foot">
@@ -82,17 +91,19 @@
       </section>
 
       <!-- Qué hacemos -->
-      <section class="section section--paper services" id="servicios" aria-labelledby="services-title">
+      <section class="section services" id="servicios" aria-labelledby="services-title">
         <div class="container">
           <div class="section-heading reveal">
             <div>
-              <h2 id="services-title">Herramientas que resuelven problemas reales.</h2>
+              <p class="eyebrow"><span></span> Qué hacemos</p>
+              <h2 id="services-title">Herramientas que resuelven problemas <em>reales.</em></h2>
             </div>
             <p>Partimos de cómo trabaja tu negocio hoy y construimos lo que hace falta. Sin sobre-ingeniería: soluciones simples, que se usan todos los días y crecen con vos.</p>
           </div>
 
           <div class="services-grid">
             <article class="service-card reveal">
+              <span class="service-number">01</span>
               <div class="service-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h5M8 16h8"/></svg>
               </div>
@@ -100,6 +111,7 @@
               <p>Clientes, turnos, stock, pagos o lo que tu negocio necesite, ordenado en un solo lugar y fácil de usar.</p>
             </article>
             <article class="service-card reveal">
+              <span class="service-number">02</span>
               <div class="service-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.7M20 4v4.7h-4.7M20 12a8 8 0 0 1-13.7 5.6L4 15.3M4 20v-4.7h4.7"/></svg>
               </div>
@@ -107,6 +119,7 @@
               <p>Convertimos tareas repetitivas y planillas manuales en procesos automáticos que ahorran tiempo y evitan errores.</p>
             </article>
             <article class="service-card reveal">
+              <span class="service-number">03</span>
               <div class="service-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
               </div>
@@ -121,7 +134,8 @@
       <section class="section process" id="proceso" aria-labelledby="process-title">
         <div class="container process-grid">
           <div class="process-intro reveal">
-            <h2 id="process-title">De un proceso manual a un sistema que funciona.</h2>
+            <p class="eyebrow eyebrow-light"><span></span> Cómo trabajamos</p>
+            <h2 id="process-title">De un proceso manual a un sistema <em>que funciona.</em></h2>
             <p>Trabajamos cerca, con avances visibles y hablando claro, sin tecnicismos.</p>
           </div>
           <ol class="process-list">
@@ -134,11 +148,12 @@
       </section>
 
       <!-- Proyectos -->
-      <section class="section section--paper projects" id="proyectos" aria-labelledby="projects-title">
+      <section class="section projects" id="proyectos" aria-labelledby="projects-title">
         <div class="container">
           <div class="section-heading reveal">
             <div>
-              <h2 id="projects-title">Lo que ya construimos.</h2>
+              <p class="eyebrow"><span></span> Proyectos</p>
+              <h2 id="projects-title">Lo que ya <em>construimos.</em></h2>
             </div>
             <p>Casos reales de cómo llevamos una necesidad concreta a una herramienta que se usa todos los días.</p>
           </div>
@@ -197,24 +212,26 @@
         <div class="container about-grid">
           <div class="about-copy reveal">
             <img class="about-logo" src="assets/logo.png" alt="" width="1011" height="452" loading="lazy">
-            <h2 id="about-title">Tecnología hecha a la medida de cada negocio.</h2>
+            <p class="eyebrow"><span></span> Quiénes somos</p>
+            <h2 id="about-title">Tecnología hecha a la medida de <em>cada negocio.</em></h2>
           </div>
           <div class="about-text reveal">
             <p class="about-lead">DIMP Systems es un equipo de desarrollo fundado por Lautaro, que después sumó a Brenda y Ramiro como co-fundadores.</p>
             <p>Nos dedicamos a crear sistemas de gestión y automatización a medida para negocios que necesitan digitalizar sus procesos manuales. Escuchamos primero, construimos lo justo y acompañamos después.</p>
             <div class="values">
-              <span>Claridad</span><span>Cercanía</span><span>Soluciones simples</span>
+              <span><i>01</i> Claridad</span><span><i>02</i> Cercanía</span><span><i>03</i> Soluciones simples</span>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Equipo -->
-      <section class="section section--paper team" id="equipo" aria-labelledby="team-title">
+      <section class="section team" id="equipo" aria-labelledby="team-title">
         <div class="container">
           <div class="section-heading reveal">
             <div>
-              <h2 id="team-title">Las personas detrás de DIMP.</h2>
+              <p class="eyebrow"><span></span> Equipo</p>
+              <h2 id="team-title">Las personas detrás de <em>DIMP.</em></h2>
             </div>
           </div>
           <ul class="team-grid">
@@ -231,7 +248,8 @@
       <section class="section contact" id="contacto" aria-labelledby="contact-title">
         <div class="container contact-grid">
           <div class="contact-copy reveal">
-            <h2 id="contact-title">¿Tenés un proceso para mejorar?</h2>
+            <p class="eyebrow eyebrow-light"><span></span> Contacto</p>
+            <h2 id="contact-title">¿Tenés un proceso para <em>mejorar?</em></h2>
             <p>Contanos qué hacés hoy a mano y te proponemos cómo simplificarlo. Sin compromiso.</p>
             <div class="contact-channels">
               <a class="button button-wa" href="https://wa.me/5491149172740" target="_blank" rel="noopener">
