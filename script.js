@@ -235,7 +235,7 @@ if (countElements.length && !prefersReducedMotion) {
   countElements.forEach((element) => countObserver.observe(element));
 }
 
-const heroPhotoImg = document.querySelector('.hero-photo img');
+const heroPhotoImg = document.querySelector('.hero-bg img');
 if (heroPhotoImg && !prefersReducedMotion) {
   let ticking = false;
 
@@ -244,7 +244,7 @@ if (heroPhotoImg && !prefersReducedMotion) {
     if (heroSection) {
       const rect = heroSection.getBoundingClientRect();
       const offset = Math.min(Math.max(rect.top * -0.06, -18), 18);
-      heroPhotoImg.style.transform = `translateY(${offset}px) scale(1.06)`;
+      heroPhotoImg.style.transform = `translateY(${offset}px) scale(1.08)`;
     }
     ticking = false;
   };

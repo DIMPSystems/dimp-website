@@ -50,7 +50,13 @@
     <main id="contenido">
       <!-- Inicio -->
       <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="container hero-grid">
+        <div class="hero-bg" aria-hidden="true">
+          <picture>
+            <source srcset="hero.webp" type="image/webp">
+            <img src="hero.jpg" alt="" loading="eager" fetchpriority="high">
+          </picture>
+        </div>
+        <div class="container hero-inner">
           <div class="hero-copy reveal">
             <h1 id="hero-title">Menos planillas.<br>Más negocio.</h1>
             <p class="hero-lead">Creamos sistemas de gestión y automatizaciones a medida para negocios que todavía hacen a mano lo que una buena herramienta puede resolver.</p>
@@ -62,24 +68,21 @@
               </a>
             </div>
           </div>
-
-          <div class="hero-visual reveal" aria-hidden="true">
-            <div class="hero-photo">
-              <picture>
-                <source srcset="hero.webp" type="image/webp">
-                <img src="hero.jpg" alt="" width="1376" height="768" loading="eager" fetchpriority="high">
-              </picture>
-              <span class="hero-photo-tag">Menos papeles. Más control.</span>
-            </div>
-          </div>
         </div>
         <div class="container hero-foot">
           <span>Gestión</span><i></i><span>Automatización</span><i></i><span>Paneles de control</span>
         </div>
       </section>
 
+      <!-- Declaración -->
+      <section class="statement" aria-labelledby="statement-title">
+        <div class="container">
+          <p class="statement-text reveal" id="statement-title">Sin sobre-ingeniería. <span class="statement-accent">Si tu equipo no lo usa, no sirve de nada.</span></p>
+        </div>
+      </section>
+
       <!-- Qué hacemos -->
-      <section class="section section--paper services seam-from-ink" id="servicios" aria-labelledby="services-title">
+      <section class="section section--paper services" id="servicios" aria-labelledby="services-title">
         <div class="container">
           <div class="section-heading reveal">
             <div>
@@ -115,7 +118,7 @@
       </section>
 
       <!-- Cómo trabajamos -->
-      <section class="section process seam-from-paper" id="proceso" aria-labelledby="process-title">
+      <section class="section process" id="proceso" aria-labelledby="process-title">
         <div class="container process-grid">
           <div class="process-intro reveal">
             <h2 id="process-title">De un proceso manual a un sistema que funciona.</h2>
@@ -131,7 +134,7 @@
       </section>
 
       <!-- Proyectos -->
-      <section class="section section--paper projects seam-from-ink" id="proyectos" aria-labelledby="projects-title">
+      <section class="section section--paper projects" id="proyectos" aria-labelledby="projects-title">
         <div class="container">
           <div class="section-heading reveal">
             <div>
@@ -190,7 +193,7 @@
       </section>
 
       <!-- Nosotros -->
-      <section class="section about seam-from-paper" id="nosotros" aria-labelledby="about-title">
+      <section class="section about" id="nosotros" aria-labelledby="about-title">
         <div class="container about-grid">
           <div class="about-copy reveal">
             <img class="about-logo" src="assets/logo.png" alt="" width="1011" height="452" loading="lazy">
@@ -207,7 +210,7 @@
       </section>
 
       <!-- Equipo -->
-      <section class="section section--paper team seam-from-ink" id="equipo" aria-labelledby="team-title">
+      <section class="section section--paper team" id="equipo" aria-labelledby="team-title">
         <div class="container">
           <div class="section-heading reveal">
             <div>
@@ -225,7 +228,7 @@
       </section>
 
       <!-- Contacto -->
-      <section class="section contact seam-from-paper" id="contacto" aria-labelledby="contact-title">
+      <section class="section contact" id="contacto" aria-labelledby="contact-title">
         <div class="container contact-grid">
           <div class="contact-copy reveal">
             <h2 id="contact-title">¿Tenés un proceso para mejorar?</h2>
