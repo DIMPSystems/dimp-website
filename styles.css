@@ -378,14 +378,12 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
   .project-card { grid-template-columns: 1.15fr .85fr; gap: 3rem; padding: 3rem; }
   .about { min-height: min(88svh, 780px); display: flex; align-items: center; }
   .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: stretch; }
-  .about-copy, .about-text { display: flex; flex-direction: column; min-height: 22rem; }
-  .about-text { justify-content: center; }
-  /* El logo pesa menos que el título, así que centrar todo el bloque como
-     una unidad deja el logo arriba del centro real. Lo empujamos con un
-     margen propio para que el CENTRO del logo caiga a la altura del centro
-     del texto de la derecha (en vez de centrar el conjunto logo+título). */
-  .about-copy { justify-content: flex-start; }
-  .about-logo { margin-top: 12.5rem; }
+  .about-copy, .about-text { display: flex; flex-direction: column; justify-content: center; min-height: 22rem; }
+  /* El logo queda más angosto que el título de abajo (que ocupa varias
+     líneas); lo corremos a la derecha para que su propio centro caiga
+     sobre el centro horizontal del bloque de texto, sin tocar la
+     posición ni la altura del título/párrafo. */
+  .about-logo { margin-left: 4.48rem; }
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .contact-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .contact-form { padding: 2rem; }
