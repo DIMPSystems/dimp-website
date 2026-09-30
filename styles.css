@@ -225,7 +225,7 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
 
 /* Nosotros */
 .about-grid { display: grid; gap: 2rem; }
-.about-logo { width: min(100%, 320px); height: auto; margin-bottom: 2.5rem; }
+.about-logo { display: block; width: min(100%, 320px); height: auto; margin: 0 auto 2.5rem; }
 .about-lead { font-size: clamp(1.15rem, 4vw, 1.4rem); line-height: 1.5; }
 .about-text > p + p { margin-top: 1rem; color: var(--text-soft); }
 .values { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
