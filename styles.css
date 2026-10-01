@@ -277,7 +277,7 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
    viera enorme y pesado en celulares medianos/grandes, dominando la
    sección. Con clamp() queda un tamaño moderado y consistente en todo el
    rango, como una marca que acompaña al título, no que compite con él. */
-.about-logo { display: block; width: clamp(140px, 38vw, 220px); height: auto; margin: 0 0 2.5rem; }
+.about-logo { display: block; width: clamp(140px, 38vw, 220px); height: auto; margin: 0 auto 2.5rem; }
 .about-lead { font-size: clamp(1.1rem, 3.6vw, 1.3rem); line-height: 1.5; }
 .about-text > p + p { margin-top: 1rem; color: var(--text-soft); }
 .values { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
