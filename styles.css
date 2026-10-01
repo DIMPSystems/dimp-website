@@ -272,7 +272,12 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
 
 /* Nosotros (tinta) */
 .about-grid { display: grid; gap: 2rem; }
-.about-logo { display: block; width: min(60%, 260px); height: auto; margin: 0 0 2.5rem; }
+/* En mobile el ancho del contenedor varía muchísimo (de ~340px a ~850px
+   antes del breakpoint de escritorio); un ancho en % hacía que el logo se
+   viera enorme y pesado en celulares medianos/grandes, dominando la
+   sección. Con clamp() queda un tamaño moderado y consistente en todo el
+   rango, como una marca que acompaña al título, no que compite con él. */
+.about-logo { display: block; width: clamp(140px, 38vw, 220px); height: auto; margin: 0 0 2.5rem; }
 .about-lead { font-size: clamp(1.1rem, 3.6vw, 1.3rem); line-height: 1.5; }
 .about-text > p + p { margin-top: 1rem; color: var(--text-soft); }
 .values { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
@@ -382,8 +387,9 @@ body.menu-open .site-header { background: var(--bg); border-color: var(--line); 
   /* El logo queda más angosto que el título de abajo (que ocupa varias
      líneas); lo corremos a la derecha para que su propio centro caiga
      sobre el centro horizontal del bloque de texto, sin tocar la
-     posición ni la altura del título/párrafo. */
-  .about-logo { margin-left: 4.48rem; }
+     posición ni la altura del título/párrafo. Ancho propio de escritorio
+     (el clamp() de la regla base es para mobile/tablet). */
+  .about-logo { width: min(60%, 260px); margin-left: 4.48rem; }
   .team-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .contact-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
   .contact-form { padding: 2rem; }
